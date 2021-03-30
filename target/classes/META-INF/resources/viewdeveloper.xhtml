@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>View Developers</title>
+</h:head>
+<h:body>
+<h:form>
+		<p:panel header="Add Skills" id="developerInfo">
+		<h:panelGrid columns="2">
+			<p:outputLabel for="firstName" value="First Name : " />
+			<p:inputText id="firstName" size="30" value="#{developer.firstName}" disabled="true" />
+			
+			<p:outputLabel for="lastName" value="Last Name : " />
+			<p:inputText id="lastName" size="30" value="#{developer.lastName}" disabled="true" />
+			
+			<p:outputLabel for="email" value="Email : " />
+			<p:inputText id="email" size="30" value="#{developer.email}" disabled="true" />
+					
+			<p:outputLabel for="skill" value="Skill : " />
+				<p:selectOneMenu id="skill"
+						value="#{developer.skills}"
+						style="width:150px">
+						<f:selectItem itemValue="JavaScript" itemLabel="JavaScript"></f:selectItem>
+						<f:selectItem itemValue="Ruby" itemLabel="Ruby"></f:selectItem>
+						<f:selectItem itemValue="Android" itemLabel="Android"></f:selectItem>
+						<f:selectItem itemValue="Java" itemLabel="Java"></f:selectItem>
+				 </p:selectOneMenu>
+			<h:commandButton type="submit"  value="Add Skill" action="#{developerController.update(developer)}"></h:commandButton>
+		   </h:panelGrid>
+		    </p:panel>
+</h:form>
+</h:body>
+</html>

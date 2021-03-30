@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Developer List</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel>
+			<h3>Developer List</h3>
+	
+			<p:dataTable var="developer" value="#{developerController.developers}">
+    <p:column headerText="First Name" >
+      <h:outputText value="#{developer.firstName}" />
+    </p:column>
+
+    <p:column headerText="Last Name">
+      <h:outputText value="#{developer.lastName}" />
+    </p:column>
+
+    <p:column headerText="Skills">
+      <h:outputText value="#{developer.skills}" />
+    </p:column>
+	
+	<p:column headerText="Action">
+      <h:commandLink value="View" action="#{developerController.view(developer)}">
+      </h:commandLink>
+    </p:column>
+    </p:dataTable>
+    </p:panel>
+	</h:form>
+		
+		<h:form>
+		<p:panel header="Add a Developer" id="developerInfo">
+		<h:panelGrid columns="2">
+			<p:outputLabel for="firstName" value="First Name : " />
+			<p:inputText id="firstName" size="30" value="#{developerController.developer.firstName}" />
+			
+			<p:outputLabel for="lastName" value="Last Name : " />
+			<p:inputText id="lastName" size="30" value="#{developerController.developer.lastName}" />
+			
+			<p:outputLabel for="email" value="Email : " />
+			<p:inputText id="email" size="30" 	value="#{developerController.developer.email}" />
+					
+			<p:outputLabel for="skill" value="Skill : " />
+				<p:selectOneMenu id="skill"
+						value="#{developerController.developer.skills}"
+						style="width:150px">
+						<f:selectItem itemValue="JavaScript" itemLabel="JavaScript"></f:selectItem>
+						<f:selectItem itemValue="Ruby" itemLabel="Ruby"></f:selectItem>
+						<f:selectItem itemValue="Android" itemLabel="Android"></f:selectItem>
+						<f:selectItem itemValue="Java" itemLabel="Java"></f:selectItem>
+				 </p:selectOneMenu>
+			<h:commandButton type="submit" value="Create" action="#{developerController.save()}"></h:commandButton>
+		   </h:panelGrid>
+		    </p:panel>
+	       </h:form>
+</h:body>
+</html>
